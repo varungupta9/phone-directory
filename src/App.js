@@ -3,15 +3,18 @@ import Header from "./Header";
 import "./App.css";
 
 class App extends Component{
-deleteHandler(message)
+constructor()
 {
-  alert(message);
+  super();
+  this.state={
+    subscribersListToShow:[]
+  }
 }
 
  render(){
-  let subscribers =[{name:"Varun",phone:"99999999"},{name:"Shawan",phone:"8888888888"},
+  //let subscribers =[{name:"Varun",phone:"99999999"},{name:"Shawan",phone:"8888888888"},
   
-  ] 
+
 
   return (
      
@@ -26,7 +29,7 @@ deleteHandler(message)
            
             </div>
             {
-              subscribers.map(sub =>{
+              this.state.subscribersListToShow.map(sub =>{
                 return  <div className="grid-container">
                 <span className="grid-item">{sub.name}</span>
                 <span className="grid-item">{sub.phone}</span>

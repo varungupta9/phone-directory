@@ -1,21 +1,9 @@
 import React ,{Component} from 'react';
 import Header from "./Header";
-import "./App.css";
+import "./ShowSubscriber.css";
 
-class App extends Component{
-constructor()
-{
-  super();
-  this.state={
-    subscribersListToShow:[]
-  }
-}
-
- render(){
-  //let subscribers =[{name:"Varun",phone:"99999999"},{name:"Shawan",phone:"8888888888"},
-  
-
-
+class ShowSubscriber extends Component{
+ render(){  
   return (
      
      <div className="component-container">
@@ -29,11 +17,11 @@ constructor()
            
             </div>
             {
-              this.state.subscribersListToShow.map(sub =>{
-                return  <div className="grid-container">
+              this.props.subscribersList.map(sub =>{
+                return  <div className="grid-container" key={sub.id}>
                 <span className="grid-item">{sub.name}</span>
                 <span className="grid-item">{sub.phone}</span>
-                <span className="grid-item"><button className="grid-item-button" onClick={this.deleteHandler.bind(this,"Deleted forever")}>Delete</button></span>
+                <span className="grid-item"><button className="grid-item-button">Delete</button></span>
                 </div>
               })
             }
@@ -43,5 +31,5 @@ constructor()
   )
 }
 }
-export default App;
+export default ShowSubscriber;
 

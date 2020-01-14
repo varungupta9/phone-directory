@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Header';
 import Header from './Header';
 import './AddSubscriber.css';
+import './PhoneDirectory.js'
 
 class AddSubscriber extends Component{
     constructor()
@@ -20,6 +21,11 @@ class AddSubscriber extends Component{
         this.setState(state);
 
     }
+    onFormSubmitted=(e)=>{
+        e.preventDefault();
+        this.props.addSubsrciberHandler(this.state);
+        this.setState=({id:0,name:'',phone:''});
+    }
     render(){
         const {name,phone}=this.state;
         return(
@@ -27,10 +33,10 @@ class AddSubscriber extends Component{
                       <Header heading="Add Subscriber"/>
                       <div className="component-body-container">
                           <button className="custom-btn">Back</button>
-                          <form className="subscriber-form">
-                              <lable htmlFor="name" className="lable-control" >Name:</lable><br/>
+                          <form className="subscriber-form" onSubmit={this.onFormSubmitted.bind(this)}>
+                              <label htmlFor="name" className="lable-control" >Name:</label><br/>
                               <input id="name" type="text" className="input-control" name="name" onChange={this.inputChangedHandler}></input><br/><br/>
-                              <lable htmlFor="phone" className="lable-control" >Phone:</lable><br/>
+                              <label htmlFor="phone" className="lable-control" >Phone:</label><br/>
                               <input id="phone" type="text" className="input-control" name="phone" onChange={this.inputChangedHandler}></input><br/><br/>
                               <div className="subscriber-info-container">
                                   <span className="subscriber-to-add-heading">Subscriber to be added:</span><br/>

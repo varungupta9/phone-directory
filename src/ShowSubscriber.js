@@ -3,7 +3,13 @@ import Header from "./Header";
 import "./ShowSubscriber.css";
 import {Link} from 'react-router-dom'
 class ShowSubscriber extends Component{
+
+
+  onDeletedClick =(subscriberId)=>{
+    this.props.deleteSubscriberHandler(subscriberId);
+  }
  render(){  
+
   return (
      
      <div className="component-container">
@@ -21,7 +27,7 @@ class ShowSubscriber extends Component{
                 return  <div className="grid-container" key={sub.id}>
                 <span className="grid-item">{sub.name}</span>
                 <span className="grid-item">{sub.phone}</span>
-                <span className="grid-item"><button className="grid-item-button">Delete</button></span>
+                <span className="grid-item"><button className="grid-item-button" onClick={this.onDeletedClick.bind(this,sub.id)}>Delete</button></span>
                 </div>
               })
             }
